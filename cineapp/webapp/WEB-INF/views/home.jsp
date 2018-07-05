@@ -12,6 +12,7 @@
     <meta name="author" content="">
     <title>CineSite | Bienvenido</title>
 	<spring:url value="/resources" var="urlPublic" />
+	<spring:url value="/" var="urlRoot" />
     <link href="${urlPublic}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="${urlPublic}/bootstrap/css/theme.css" rel="stylesheet">
 
@@ -61,15 +62,21 @@
       <div class="row page-header">          
         <div class="col-lg-12">         
           <h2 class="text text-center"><span class="label label-success">EN CARTELERA</span></h2>          
-          <form class="form-inline" action="#" method="post">
+          <form class="form-inline" action="${urlRoot}search" method="post">
             <div class="form-group">
               <label for="fecha">Fecha: </label>
               <select id="fecha" name="fecha" class="form-control">
-                <option value="01-05-2017">01-05-2017</option>
-                <option value="02-05-2017">02-05-2017</option>
-                <option value="03-05-2017">03-05-2017</option>
-                <option value="04-05-2017">04-05-2017</option>                
-              </select>
+			    <c:forEach items="${fechas}" var="fecha">
+			        <c:choose>
+			  		   <c:when test="${fechaBusqueda eq fecha}" >
+						  <option value="${fecha}" selected>${fecha}</option>	
+					   </c:when>
+					   <c:otherwise>
+						  <option value="${fecha}">${fecha}</option>	
+					   </c:otherwise>
+					</c:choose>	
+			    </c:forEach>             
+			</select>
             </div>            
             <button type="submit" class="btn btn-primary">Filtrar</button>
           </form>
