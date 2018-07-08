@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import net.itinajero.app.model.Pelicula;
+import net.itinajero.app.service.IBannersService;
 import net.itinajero.app.service.IPeliculasService;
 import net.itinajero.app.util.Utiles;
 
@@ -26,6 +27,8 @@ public class HomeController {
 	@Autowired
 	private IPeliculasService serviceopeliculas;
 	
+	@Autowired
+	private IBannersService serviceBanners; // Ejercicio : Solucion
 	
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String goHome(){
@@ -40,6 +43,7 @@ public class HomeController {
 		model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
 		model.addAttribute("peliculas", peliculas);
 		model.addAttribute("fechas", fechas);
+		model.addAttribute("banners", serviceBanners.buscarTodos());
 		return "home";
 	}
 	@RequestMapping(value="/search", method= RequestMethod.POST)
@@ -50,7 +54,7 @@ public class HomeController {
 		model.addAttribute("fechaBusqueda", fecha);
 		model.addAttribute("peliculas", peliculas);
 		model.addAttribute("fechas", fechas);
-		
+		model.addAttribute("banners", serviceBanners.buscarTodos()); // Ejercicio : Solucion
 		return "home";
 	}
 	

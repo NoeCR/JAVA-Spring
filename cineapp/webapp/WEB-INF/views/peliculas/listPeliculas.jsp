@@ -53,10 +53,10 @@
 	                <td>
 	                	<c:choose>
 	                		<c:when test="${p.estatus eq 'Activa'}">
-	                			<span class="label label-success">estatus</span>
+	                			<span class="label label-success">${p.estatus}</span>
 	                		</c:when>
 	                		<c:otherwise>
-	                			 <span class="label label-danger">estatus</span>
+	                			 <span class="label label-danger">${p.estatus}</span>
 	                		</c:otherwise>
 	                	</c:choose>	                
 	               </td>
