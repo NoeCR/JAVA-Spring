@@ -6,12 +6,28 @@ public class Pelicula {
 
 	private int id;
 	private String titulo;
-	private int duracion;
-	private String clasificacion;
+	private int duracion=100;
+	private String clasificacion="B";
 	private String genero;
 	private String imagen = "cinema.png";
 	private Date fechaEstreno;
 	private String estatus = "Activa";
+	
+	private Detalle detalle;
+	
+	public Pelicula() {
+		System.out.println("Constructor Pelicula");
+	}
+	
+	
+	public Detalle getDetalle() {
+		return detalle;
+	}
+
+
+	public void setDetalle(Detalle detalle) {
+		this.detalle = detalle;
+	}
 	public int getId() {
 		return id;
 	}
