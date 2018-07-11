@@ -1,7 +1,17 @@
 package net.itinajero.app.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="detalles")
 public class Detalle {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String director;
 	private String actores;
@@ -10,7 +20,7 @@ public class Detalle {
 	
 	
 	public Detalle() {
-		System.out.println("Constructor Detalle");
+		
 	}
 
 
