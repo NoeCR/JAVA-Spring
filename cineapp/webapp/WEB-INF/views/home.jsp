@@ -112,7 +112,7 @@
 	            <%-- 
 	            <p><a class="btn btn-sm btn-primary" href="detail/${p.id}/${fechaBusqueda}" role="button">Consulta Horarios &raquo;</a></p>
 	            --%>     
-	             <p><a class="btn btn-sm btn-primary" href="detail?idMovie=${p.id}&fecha=${fechaBusqueda}" role="button">Consulta Horarios &raquo;</a></p>
+	             <p><a class="btn btn-sm btn-primary" href="detail/${p.id}/${fechaBusqueda}" role="button">Consulta Horarios &raquo;</a></p>
 	          </div>
          </c:forEach>
         </div>

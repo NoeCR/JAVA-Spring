@@ -12,6 +12,8 @@
     <title>Listado de Peliculas</title>
     <spring:url value="/resources" var="urlPublic"></spring:url>
     <spring:url value="/peliculas/create" var="urlFormCreate"></spring:url>
+    <spring:url value="/peliculas/edit" var="urlFormEdit"></spring:url>
+    <spring:url value="/peliculas/delete" var="urlFormDelete"></spring:url>
     <link href="${urlPublic}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="${urlPublic}/bootstrap/css/theme.css" rel="stylesheet">
     
@@ -43,7 +45,7 @@
                 <th>Estatus</th>
                 <th>Opciones</th>
             </tr>
-            <c:forEach items="${peliculas}" var="p">
+            <c:forEach items="${peliculas.content}" var="p">
 	            <tr>
 	                <td>${p.titulo}</td>
 	                <td>${p.genero}</td>
@@ -61,12 +63,18 @@
 	                	</c:choose>	                
 	               </td>
 	                <td>
-	                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
-	                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
+	                    <a href="${urlFormEdit}/${p.id}" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
+	                    <a href="${urlFormDelete}/${p.id}" onclick="return confirm('¿Esta seguro de querer eliminar esta pelicula?')" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
 	                </td>
 	            </tr>
             </c:forEach>
         </table>
+        <nav aria-label="">
+			<ul class="pager">
+				<li><a href="${urlPeliculas}/indexPaginate?page=${peliculas.number - 1 }">Anterior</a></li>
+				<li><a href="${urlPeliculas}/indexPaginate?page=${peliculas.number + 1 }">Siguiente</a></li>
+			</ul>
+		</nav>
       </div>
           
       <hr class="featurette-divider">
