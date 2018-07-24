@@ -1,24 +1,33 @@
 /**
- * Clase que representa una imagen del Banner (Carousel) de la pagina principal
+ * Clase de modelo que representa una imagen del Banner (Carousel) de la pagina principal.
  */
 package net.itinajero.app.model;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "Banners")
 public class Banner {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY) // auto_increment MySQL
 	private int id;
-	private String titulo;
-	private Date fecha; // Fecha de Publicacion del Banner
+	private String titulo; // titulo para indicar el atributo title <img src='' title='?' />
+	private Date fecha; // fecha de publicacion de la imagen
 	private String archivo; // atributo para guardar el nombre de la imagen
-	private String estatus;
+	private String estatus; // posibles valores: Activo, Inactivo 
 	
 	/**
-	 * Constructor de la clase
-	 */
+     * Constructor sin parametros
+     */
 	public Banner(){		
-		this.fecha = new Date(); // Por default, la fecha del sistema
-		this.estatus="Activo"; // Por default el banner esta activo
+		this.fecha = new Date(); // por default la fecha del sistema
+		this.estatus="Activo"; // por default el banner esta Activo
 	}
 
 	public int getId() {

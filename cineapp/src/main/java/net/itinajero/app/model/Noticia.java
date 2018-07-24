@@ -1,30 +1,33 @@
+/**
+ *  Clase de modelo que representa una noticia en la seccion Noticias / Novedades de la pagina principal
+ */
 package net.itinajero.app.model;
 
 import java.util.Date;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity					//Indicamos que nuestra clase modelo es una entidad
-@Table(name="noticias")//Indicamos el nombre de la tabla SQL de nuestra base de datos
+@Entity
+@Table(name = "Noticias")
 public class Noticia {
 
-	@Id													   //Indicamos que el atributo es la llave rpimaria de nuestra tabla
-	@GeneratedValue(strategy=GenerationType.IDENTITY)     //indicamos que se genera de forma automatica AI
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment MySQL
 	private int id;
-	@Column(name="titulo",length=250,nullable=false)      //se usa para mapear ek atributo con la columna de la BBDD, se puede omitir si se llaman igual pero es aconsejable su uso
 	private String titulo;
 	private Date fecha;
 	private String detalle;
-	private String estatus;
-	
-	public Noticia(){
-		this.fecha = new Date();
-		this.estatus = "Activa";
+	private String estatus; // posibles valores: Activa, Inactiva
+
+	/**
+	 * Constructor sin parametros
+	 */
+	public Noticia() {
+		this.fecha = new Date(); // por default la fecha del sistema
+		this.estatus = "Activa"; // por default la noticia esta Activa
 	}
 
 	public int getId() {
@@ -72,5 +75,5 @@ public class Noticia {
 		return "Noticia [id=" + id + ", titulo=" + titulo + ", fecha=" + fecha + ", detalle=" + detalle + ", estatus="
 				+ estatus + "]";
 	}
-	
+
 }
