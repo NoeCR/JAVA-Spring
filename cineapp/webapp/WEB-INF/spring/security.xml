@@ -18,6 +18,9 @@
 		<form-login login-page="/formLogin" default-target-url="/admin/index"/>
 	</http>
 
+
+<!-- Declaracion de usuarios en memoria -->
+<!-- 
    <authentication-manager>
 
       <authentication-provider>
@@ -28,5 +31,15 @@
       </authentication-provider>
 
    </authentication-manager>
-
+ -->
+ 
+ <!-- Autenticacion desde una base de datos -->
+		<authentication-manager>
+			<authentication-provider>
+				<jdbc-user-service data-source-ref="dataSource" 
+				users-by-username-query="select cuenta,pwd,activo from Usuarios where cuenta = ? "
+				authorities-by-username-query="select cuenta,perfil from Perfiles where cuenta = ? " />
+			</authentication-provider>
+		</authentication-manager>
+		 
 </b:beans>
