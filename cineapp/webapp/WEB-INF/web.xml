@@ -87,5 +87,43 @@
 			<filter-name>springSecurityFilterChain</filter-name>
 			<url-pattern>/*</url-pattern>
 		</filter-mapping>
+<!--
+	Directorios URL's protegidos 
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>URLs protegidas solo para el rol Editor</web-resource-name>
+			
+			<url-pattern>/admin/*</url-pattern>
+			<url-pattern>/horarios/*</url-pattern>
+			<url-pattern>/noticias/*</url-pattern>			
+			<url-pattern>/peliculas/*</url-pattern>
+		</web-resource-collection>
+			<auth-constraint>
+				<role-name>editor</role-name>
+			</auth-constraint>
+	</security-constraint>
 	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>URLs protegidas solo para el rol gerente</web-resource-name>
+			
+			<url-pattern>/admin/*</url-pattern>
+			<url-pattern>/horarios/*</url-pattern>
+			<url-pattern>/noticias/*</url-pattern>
+			<url-pattern>/banners/*</url-pattern>
+			<url-pattern>/peliculas/*</url-pattern>
+		</web-resource-collection>
+			<auth-constraint>
+				<role-name>gerente</role-name>
+			</auth-constraint>
+		</security-constraint>
+ Bloque para la seguridad a traves de JDBC Realm
+	<login-config>
+		<auth-method>FORM</auth-method>
+			<form-login-config>
+				<form-login-page>/WEB-INF/views/login.jsp</form-login-page>
+				<form-error-page>/WEB-INF/views/formError.jsp</form-error-page>
+			</form-login-config>
+	</login-config>
+	 -->
 </web-app>

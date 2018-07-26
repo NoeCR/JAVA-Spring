@@ -1,6 +1,7 @@
 package net.itinajero.app.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -27,5 +28,12 @@ public class LoginController {
 			System.out.println("Rol: " + rol.getAuthority());
 		}
 		return "admin";
+	}
+	
+	@GetMapping(value ="/logoutJDBC")
+	public String logoutJDBC(HttpServletRequest request){
+		HttpSession sesion = request.getSession();
+		sesion.invalidate();
+		return "redirect:/";
 	}
 }
